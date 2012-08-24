@@ -5,7 +5,6 @@ use 5.010;
 use autodie;
 use File::Slurp;
 use Getopt::Long;
-use TryCatch;
 
 ### CONFIGURE LIST LOCATION ##############
 my $filename = $ENV{HOME} . "/.list.txt";
@@ -21,7 +20,7 @@ my $add = join(' ',@ARGV);
 
 # Get list
 my @list;
-try { @list = read_file($filename)}
+-e$filename and @list = read_file($filename);
 
 # Apply changes and save
 splice(@list, $delete-1, 1) if $delete; 
