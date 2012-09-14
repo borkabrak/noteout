@@ -7,15 +7,28 @@ use File::Slurp;
 use Getopt::Long;
 
 ### CONFIGURE LIST LOCATION ##############
-my $filename = $ENV{HOME} . "/.list.txt";
+my $filename = 
 ##########################################
 
-my ($select,$delete);
-GetOptions( 
-    "select=i" => \$select,
-    "delete=i" => \$delete,
+# params (and defaults)
+my (
+    $select,
+    $delete,
+    $filename) 
+
+= (
+    undef,
+    undef,
+    $ENV{HOME} . "/.list.txt",
 );
-# Any other params comprise an item to add
+
+GetOptions( 
+    "select=i" => \$select, # select an individual item
+    "delete=i" => \$delete, # delete an item
+    "list=s"   => \$filename,   # select a filename
+);
+
+# Any other (non-specified) params comprise an item to add
 my $add = join(' ',@ARGV);
 
 # Get list
