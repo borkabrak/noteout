@@ -64,9 +64,7 @@ for (@list){
 =head1 SYNOPSIS
 
     noteout 
-    noteout <item>
-    noteout [-s|-select] <index>
-    noteout [-d|-delete] <index>
+    noteout [item] [-s|--select <index>] [-d|--delete <index>] [-l|--list <listname>]
 
 =head1 DESCRIPTION
 
@@ -78,15 +76,20 @@ for (@list){
 B<<item>>
 
     Add the given item to the list.  Quotes are optional, but keep in mind
-    that the line is subject to shell expansion.
+    that the line is subject to shell expansion.  
 
-B<-s -select <index>>
+B<-s --select <index>>
     
     Display only the given item.
 
-B<-d -delete <index>>
+B<-d --delete <index>>
+
     Delete the item with the given index.  Index will match the item
     number given when the list is displayed.
+
+B<-l --list <list>>
+
+    Specify a file to use.  Optional.
 
 =head1 FILES
     
