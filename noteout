@@ -35,9 +35,11 @@ my @list;
 -e$filename and @list = read_file($filename);
 
 # Apply changes and save
-splice(@list, $delete-1, 1) if $delete; 
-unshift(@list, "$add\n") if $add; # Add to the top - LIFO, like a stack
-write_file($filename, @list) or warn "Unable to save list!\n$@\n";
+if ($add or $delete) {
+    splice(@list, $delete-1, 1) if $delete; 
+    unshift(@list, "$add\n") if $add; # Add to the top - LIFO, like a stack
+    write_file($filename, @list) or warn "Unable to save list!\n$@\n";
+}
 
 # Show list
 my $linenum = 0;
