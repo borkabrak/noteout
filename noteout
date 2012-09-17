@@ -6,10 +6,6 @@ use autodie;
 use File::Slurp;
 use Getopt::Long;
 
-### CONFIGURE LIST LOCATION ##############
-my $filename = 
-##########################################
-
 # params (and defaults)
 my (
     $select,
