@@ -19,9 +19,9 @@ my (
 );
 
 GetOptions( 
-    "select=i" => \$select, # select an individual item
-    "delete=i" => \$delete, # delete an item
-    "list=s"   => \$filename,   # select a filename
+    "select=i" => \$select,                         # select an individual item
+    "delete:i" => sub { $delete = $_[1] || 1},      # delete defaults to the first item
+    "list=s"   => \$filename,                       # select a filename
 );
 
 # All list files are relative to the home dir.
