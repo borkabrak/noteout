@@ -85,12 +85,7 @@ B<-d --delete <index>>
 
 B<-l --list <list>>
 
-    Specify a file to use.  Optional.
-
-=head1 FILES
-    
-    ~/noteout/list.txt - the file noteout uses to store the list.  This is
-    normal, human-readable text.
+    Specify a non-default file to use.  Optional.
 
 =head1 TODO
 
