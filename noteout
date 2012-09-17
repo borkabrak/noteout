@@ -15,7 +15,7 @@ my (
 = (
     undef,
     undef,
-    $ENV{HOME} . "/.list.txt",
+    ".list.txt",
 );
 
 GetOptions( 
@@ -23,6 +23,9 @@ GetOptions(
     "delete=i" => \$delete, # delete an item
     "list=s"   => \$filename,   # select a filename
 );
+
+# All list files are relative to the home dir.
+$filename = $ENV{HOME} . "/" . $filename;
 
 # Any other (non-specified) params comprise an item to add
 my $add = join(' ',@ARGV);
@@ -85,7 +88,9 @@ B<-d --delete <index>>
 
 B<-l --list <list>>
 
-    Specify a non-default file to use.  Optional.
+    Specify a non-default file to use.  Optional.  This value is relative to
+    the user's home dir, so saying 'noteout -l bork' indicates a file at
+    $ENV{HOME} . "/bork"
 
 =head1 TODO
 
